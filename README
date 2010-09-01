@@ -1,0 +1,25 @@
+SimpleSerializedAttributes
+==========================
+
+  A simple way to treat serialized attributes like regular ol' attributes.
+
+
+Example
+=======
+
+  class Foo
+    # requires real DB column named 'data' of type 'text'
+    # declares attributes 'a', 'b' that will be serialized as YAML
+    # data types are not strictly enforced
+    simple_serialized_attributes :data => [:a, :b]
+  end
+
+  f = Foo.new :a => 'something'
+  f.a = 'something'
+  f.a.class = String
+  f.a = 23498
+  f.a.class = Fixnum
+
+
+Copyright (c) 2010 Ethan Czahor, released under the MIT license
+
